@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>FC-2D (Browser-only) - Prototype</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="container">
+    <aside id="sidebar">
+      <h1>FC-2D</h1>
+      <section class="panel">
+        <h2>Lobby</h2>
+        <input id="playerName" placeholder="Tên bạn" />
+        <button id="createBtn">Tạo đội mới</button>
+        <div id="teamSummary"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Đội hình & Tactics</h2>
+        <input id="teamName" placeholder="Tên đội" />
+        <label>Màu áo: <input id="teamColor" type="color" value="#ff6f00" /></label>
+        <div id="tactics">
+          <label>Pressing: <input id="t_pressing" type="range" min="0" max="100" value="50"/></label>
+          <label>Width: <input id="t_width" type="range" min="0" max="100" value="50"/></label>
+          <label>Tempo: <input id="t_tempo" type="range" min="0" max="100" value="50"/></label>
+          <label>Passing: <input id="t_passing" type="range" min="0" max="100" value="50"/></label>
+          <label>Def Line: <input id="t_defline" type="range" min="0" max="100" value="50"/></label>
+        </div>
+        <button id="saveTeamBtn">Lưu đội & chiến thuật</button>
+        <div id="lineupPreview"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Thị trường (Search)</h2>
+        <input id="searchInput" placeholder="Tìm cầu thủ theo tên hoặc vị trí" />
+        <div id="marketControls">
+          <label>Số cầu thủ sinh: <input id="playerCount" type="number" min="1000" max="17000" step="1000" value="17000"/></label>
+          <button id="regenPlayers">Sinh lại players</button>
+        </div>
+        <div id="market" class="market"></div>
+        <div id="pager">
+          <button id="prevPage">‹</button>
+          <span id="pageInfo"></span>
+          <button id="nextPage">›</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Controls</h2>
+        <button id="ensure11">Đảm bảo 11 cầu thủ</button>
+        <button id="startMatchBtn">Bắt đầu trận</button>
+        <div id="tips">
+          <small>AI Hard rất khó nếu bạn không có đội & chiến thuật tốt. Thay người khi stamina thấp.</small>
+        </div>
+      </section>
+    </aside>
+
+    <main id="main">
+      <div id="topbar">
+        <div id="scoreboard">0 - 0</div>
+        <div id="minute">0'</div>
+      </div>
+
+      <div id="gameArea">
+        <canvas id="field" width="900" height="560"></canvas>
+        <div id="events"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
